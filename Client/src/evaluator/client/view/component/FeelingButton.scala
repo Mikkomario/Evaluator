@@ -21,7 +21,7 @@ import utopia.reflection.localization.LocalString._
  * @author Mikko Hilpinen
  * @since 15.9.2020, v0.1
  */
-class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(implicit context: TextContextLike)
+class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(action: => Unit)(implicit context: TextContextLike)
 	extends StackableAwtComponentWrapperWrapper
 {
 	// ATTRIBUTES   ----------------------------
@@ -48,6 +48,8 @@ class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(implicit context
 	// Triggers the button when the hotkey is pressed
 	button.addKeyStateListener(KeyStateListener(KeyStateEvent.charFilter(hotKey) && KeyStateEvent.wasPressedFilter) {
 		_ => button.trigger() })
+	
+	button.registerAction { () => action }
 	
 	
 	// COMPUTED --------------------------------
