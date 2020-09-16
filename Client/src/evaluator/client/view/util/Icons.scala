@@ -74,10 +74,10 @@ object Icons
 		 */
 		def apply(feeling: Feeling) = feeling match
 		{
-			case Good => good
-			case VeryGood => veryGood
-			case Bad => bad
-			case VeryBad => veryBad
+			case SlightlyGood => good
+			case Good | VeryGood => veryGood
+			case SlightlyBad => bad
+			case Bad | VeryBad => veryBad
 		}
 		
 		/**

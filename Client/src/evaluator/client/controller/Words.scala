@@ -9,22 +9,6 @@ object Words
 {
 	// ATTRIBUTES   -------------------------------
 	
-	private val values = Vector("Test 1", "Test 2", "Test 3")
-	
-	
-	// COMPUTED -----------------------------------
-	
-	/**
-	  * @return An infinite iterator that returns words
-	  */
-	def iterator =
-	{
-		// TODO: This is just a placeholder implementation
-		var currentIterator = values.iterator
-		Iterator.continually {
-			if (!currentIterator.hasNext)
-				currentIterator = values.iterator
-			currentIterator.next()
-		}
-	}
+	// TODO: These will be replaced with a more sophisticated approach
+	val values = Vector("Test 1", "Test 2", "Test 3")
 }

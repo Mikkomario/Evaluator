@@ -16,7 +16,7 @@ object EvaluatorApp extends App
 	import evaluator.client.controller.Globals._
 	import evaluator.client.view.util.Setup._
 	
-	val wordsIter = Words.iterator
+	val wordsIter = Words.values.iterator
 	new SingleFrameSetup(actorHandler, Frame.windowed(
-		AssociationVC { _ => wordsIter.next() }(baseContext.inContextWithBackground(Color.black)))).start()
+		AssociationVC { _ => wordsIter.nextOption() }(baseContext.inContextWithBackground(Color.black)))).start()
 }

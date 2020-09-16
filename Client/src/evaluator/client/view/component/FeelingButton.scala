@@ -1,7 +1,7 @@
 package evaluator.client.view.component
 
 import evaluator.client.model.enumeration.Feeling
-import evaluator.client.model.enumeration.Intensity.{Strong, Weak}
+import evaluator.client.model.enumeration.Intensity.Weak
 import evaluator.client.view.util.Icons.FeelingIcons
 import utopia.genesis.event.KeyStateEvent
 import utopia.genesis.handling.KeyStateListener
@@ -54,6 +54,12 @@ class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(action: => Unit)
 	
 	// COMPUTED --------------------------------
 	
+	/**
+	  * @return Whether this button is currently enabled / actionable
+	  */
+	def enabled = button.enabled
+	def enabled_=(newEnabled: Boolean) = button.enabled = newEnabled
+	
 	private def color =
 	{
 		val set = feeling match
@@ -66,8 +72,8 @@ class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(action: => Unit)
 				}
 				defined.intensity match
 				{
-					case Strong => base
 					case Weak => base.map { _.timesSaturation(0.5) }
+					case _ => base
 				}
 			case None => context.colorScheme.gray
 		}

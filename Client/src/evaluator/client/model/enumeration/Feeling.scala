@@ -1,6 +1,6 @@
 package evaluator.client.model.enumeration
 
-import evaluator.client.model.enumeration.Intensity.{Strong, Weak}
+import evaluator.client.model.enumeration.Intensity.{Strong, VeryStrong, Weak}
 import utopia.flow.util.RichComparable
 import utopia.genesis.shape.shape1D.Direction1D
 import utopia.genesis.shape.shape1D.Direction1D.{Negative, Positive}
@@ -63,7 +63,7 @@ object Feeling
 	case object VeryGood extends Feeling
 	{
 		override val sign = Positive
-		override val intensity = Strong
+		override val intensity = VeryStrong
 	}
 	
 	/**
@@ -72,6 +72,24 @@ object Feeling
 	case object Good extends Feeling
 	{
 		override val sign = Positive
+		override val intensity = Strong
+	}
+	
+	/**
+	  * A slightly positive feeling
+	  */
+	case object SlightlyGood extends Feeling
+	{
+		override val sign = Positive
+		override val intensity = Weak
+	}
+	
+	/**
+	  * A slightly negative feeling
+	  */
+	case object SlightlyBad extends Feeling
+	{
+		override val sign = Negative
 		override val intensity = Weak
 	}
 	
@@ -81,7 +99,7 @@ object Feeling
 	case object Bad extends Feeling
 	{
 		override val sign = Negative
-		override val intensity = Weak
+		override val intensity = Strong
 	}
 	
 	/**
@@ -90,6 +108,6 @@ object Feeling
 	case object VeryBad extends Feeling
 	{
 		override val sign = Negative
-		override val intensity = Strong
+		override val intensity = VeryStrong
 	}
 }
