@@ -3,8 +3,6 @@ package evaluator.client.view.component
 import evaluator.client.model.enumeration.Feeling
 import evaluator.client.model.enumeration.Intensity.Weak
 import evaluator.client.view.util.Icons.FeelingIcons
-import utopia.genesis.event.KeyStateEvent
-import utopia.genesis.handling.KeyStateListener
 import utopia.genesis.shape.shape1D.Direction1D.{Negative, Positive}
 import utopia.reflection.color.TextColorStandard.{Dark, Light}
 import utopia.reflection.component.context.TextContextLike
@@ -35,7 +33,7 @@ class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(action: => Unit)
 			case Light => ButtonImageSet.darkening(baseImage)
 			case Dark => ButtonImageSet.brightening(baseImage)
 		}
-		ImageButton.contextualWithoutAction(buttonImage)
+		ImageButton.contextualWithoutAction(buttonImage, hotKeyChars = Set(hotKey))
 	}
 	private val view = Stack.columnWithItems(Vector(
 		button,
@@ -44,10 +42,6 @@ class FeelingButton(val feeling: Option[Feeling], hotKey: Char)(action: => Unit)
 	
 	
 	// INITIAL CODE ----------------------------
-	
-	// Triggers the button when the hotkey is pressed
-	button.addKeyStateListener(KeyStateListener(KeyStateEvent.charFilter(hotKey) && KeyStateEvent.wasPressedFilter) {
-		_ => button.trigger() })
 	
 	button.registerAction { () => action }
 	
