@@ -1,5 +1,9 @@
 package evaluator.client.controller
 
+import Globals._
+import utopia.flow.container.ValueFileContainer
+import utopia.flow.util.FileExtensions._
+
 /**
   * Used for accessing tested list of words
   * @author Mikko Hilpinen
@@ -9,6 +13,15 @@ object Words
 {
 	// ATTRIBUTES   -------------------------------
 	
-	// TODO: These will be replaced with a more sophisticated approach
-	val values = Vector("Test 1", "Test 2", "Test 3")
+	// TODO: Update path
+	private val container = new ValueFileContainer("Client/data/words.json")
+	private val valuesView = container.pointer.lazyMap { _.getVector.map { _.getString } }
+	
+	
+	// COMPUTED -----------------------------------
+	
+	/**
+	  * @return Currently available list of words
+	  */
+	def values = valuesView.get
 }

@@ -15,7 +15,7 @@ object Icons
 	// ATTRIBUTES   -------------------------
 	
 	// TODO: Change path
-	private val cache = new SingleColorIconCache("Client/data/icons")
+	private val cache = new SingleColorIconCache("Client/resources/icons")
 	
 	
 	// COMPUTED -----------------------------

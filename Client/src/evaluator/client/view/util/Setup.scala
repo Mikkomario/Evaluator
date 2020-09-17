@@ -18,11 +18,6 @@ import utopia.reflection.text.Font
   */
 object Setup
 {
-	// INITIAL CODE ----------------------------
-	
-	GenesisDataType.setup()
-	
-	
 	// ATTRIBUTES   ----------------------------
 	
 	implicit val ppi: Ppi = Screen.ppi
@@ -33,12 +28,14 @@ object Setup
 	
 	val margins = Margins(2.5.mm.toPixels.round)
 	val standardFontSize = 0.5.cm.toPixels.round.toInt
+	val standardFieldWidth = 5.cm.toPixels.round.toInt
 	
 	val actorHandler = mutable.ActorHandler()
 	
-	val baseContext = BaseContext(actorHandler,
-		Font.load("data/fonts/RobotoCondensed-Regular.ttf", standardFontSize)
-			.getOrElse(Font("Arial", standardFontSize)), colorScheme, margins)
+	val standardFont = Font.load("data/fonts/RobotoCondensed-Regular.ttf", standardFontSize)
+		.getOrElse(Font("Arial", standardFontSize))
+	val valueFont = standardFont * 1.2
+	val baseContext = BaseContext(actorHandler, standardFont, colorScheme, margins)
 	
 	implicit val animationContext: AnimationContext = AnimationContext(actorHandler)
 	implicit val scrollingContext: ScrollingContext = ScrollingContext.withDarkRoundedBar(actorHandler,

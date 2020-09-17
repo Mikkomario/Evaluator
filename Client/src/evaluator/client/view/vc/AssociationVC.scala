@@ -51,7 +51,7 @@ class AssociationVC(parentContext: ColorContext, options: Seq[Option[Feeling]] =
 	
 	private val context = parentContext.withLightGrayBackground.forTextComponents(Alignment.Center)
 	
-	private val wordLabel = context.mapFont { _ * 1.2 }.mapInsets { _ + margins.verySmall }.use { implicit c =>
+	private val wordLabel = context.withFont(valueFont).mapInsets { _ + margins.verySmall }.use { implicit c =>
 		val label = ItemLabel.contextualWithPointer[Option[String]](currentWordPointer,
 			DisplayFunction.noLocalization[Option[String]] { _.getOrElse("").noLanguage })
 		label.addCustomDrawer(BorderDrawer(Border.symmetric(margins.verySmall, label.textColor)))

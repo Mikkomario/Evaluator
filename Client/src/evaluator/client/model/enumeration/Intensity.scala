@@ -11,6 +11,28 @@ sealed trait Intensity extends RichComparable[Intensity]
 
 object Intensity
 {
+	// ATTRIBUTES   ------------------------
+	
+	/**
+	  * Possible values of this enumeration
+	  */
+	val values = Vector[Intensity](Weak, Strong, VeryStrong)
+	
+	
+	// COMPUTED ----------------------------
+	
+	/**
+	  * @return The smallest intensity available
+	  */
+	def minimum = Weak
+	/**
+	  * @return The largest intensity available
+	  */
+	def maximum = VeryStrong
+	
+	
+	// NESTED   ----------------------------
+	
 	/**
 	  * A very strong intensity
 	  */
