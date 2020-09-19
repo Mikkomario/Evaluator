@@ -13,7 +13,7 @@ object Words
 {
 	// ATTRIBUTES   -------------------------------
 	
-	// TODO: Update path
+	// TODO: Update path (and content)
 	private val container = new ValueFileContainer("Client/data/words.json")
 	private val valuesView = container.pointer.lazyMap { _.getVector.map { _.getString } }
 	
